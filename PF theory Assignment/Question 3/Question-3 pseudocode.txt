@@ -1,0 +1,38 @@
+START 
+Print "Enter your Age"
+Input age 
+if age < 18 then
+Print "You are not eligible For license "
+Else 
+Print "Have you passed or  failed Eyesight test?"
+Input eyesight test 
+If eyesight test = failed then
+Print "You might need a prescription for glasses"
+Else 
+Print "Have you passed or failed written test"
+Input written Test 
+If Written test = failed then 
+Print "You need to retake written test"
+Else 
+Print "Have you passed or failed driving test"
+Input driving test
+If driving test = failed then 
+Print "You are not eligible"
+Else 
+Print "Are your Age > 60"
+if age < 60 then 
+Print "You are eligible"
+Else 
+Print "Do you have Medical fitness certificate"
+input medical certificate
+If medical certificate =  yes then 
+Print "You Are eligible" 
+Else 
+Print "You are not Eligible"
+End If 
+End if
+End if 
+End if 
+End if 
+End if 
+END
