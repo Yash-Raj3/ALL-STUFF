@@ -1,0 +1,15 @@
+START 
+Print "Enter Transaction Number"
+Input Transaction number
+if Transaction no < 3 then
+Print "Enter Transaction country"
+Input Transaction country
+Else if  Transaction country = Pakistan or UAE then 
+Print "Enter Transaction Amount"
+Input Transaction Amount 
+Else if Transaction Amount <5000 then 
+Print "Safe transaction"
+Else 
+Print "Suspicious Transaction Flagged"
+End if 
+END
