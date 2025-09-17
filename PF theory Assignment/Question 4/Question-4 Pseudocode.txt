@@ -1,0 +1,15 @@
+START
+Print "Enter Five Card Numbers (1-13)"
+Input Card1,Card2,Card3,Card4,Card5
+If{ (Card1=Card2 and Card2=Card3 and Card4=Card5 and Card4!=Card1)OR
+    (Card3=Card4 and Card4=Card5 and Card1=Card2 and Card1!=Card3)OR
+    (Card2=Card3 and Card3=Card4 and Card1=Card5 and Card1!=Card2)OR
+    (Card1=Card2 and Card2=Card5 and Card3=Card4 and Card3!=Card1)OR
+    (Card1=Card3 and Card3=Card4 and Card2=Card5 and Card2!=Card1)OR
+    (Card1=Card4 and Card4=Card5 and Card3=Card2 and Card3!=Card1)OR
+    (Card1=Card3 and Card3=Card5 and Card2=Card4 and Card2!=Card1) then
+Print "The Hand is House  Full!!"
+Else
+Print "The Hand is not House Full"
+End if
+END
