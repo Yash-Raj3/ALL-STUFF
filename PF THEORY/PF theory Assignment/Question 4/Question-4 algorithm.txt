@@ -1,9 +1,0 @@
-START
-Display Enter Five Card Numbers (1-13)
-Input Card1,Card2,Card3,Card4,Card5
-Count how many times each card number appears
-If one card number is  appearing 3 times and another card number is appearing 2 times then
-Display The Hand is House  Full!!
-OtherWise
-Display The Hand is not House Full
-END
