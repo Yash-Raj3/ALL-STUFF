@@ -3,25 +3,31 @@ int main(){
     int c0=0,c1=0,c2=0,c3=0,c4=0,c5=0,c6=0,c7=0,c8=0,c9=0;
     int num;
     printf("Enter the number (0-9)");
-    while(1){
-        scanf("%d",&num);
-        if (num<0 || num>9){
-            break;
-        }
-        switch(num){
-            case 0:c0++;break;
-            case 1:c1++;break;
-            case 2:c2++;break;
-            case 3:c3++;break;
-            case 4:c4++;break;
-            case 5:c5++;break;
-            case 6:c6++;break;
-            case 7:c7++;break;
-            case 8:c8++;break;
-            case 9:c9++;break;
+    do{ 
+      scanf("%d",&num);
+       if(num == 0){
+       c0++;
+       }else if (num == 1){
+       c1++;
+       }else if (num == 2){
+       c2++;
+       }else if (num == 3){
+       c3++;
+       }else if (num == 4){
+       c4++;
+       }else if (num == 5){
+       c5++;
+       }else if (num == 6){
+       c6++;
+       }else if (num == 7){
+       c7++;
+       }else if( num == 8){
+       c8++;
+       }else if (num == 9){
+       c9++;
+       }
+       }while(num <= 9 && num >=0);
     
-                }
-    }
     printf("Number\t Number occurence\n");
     printf("0\t%d\n",c0);
      printf("1\t%d\n",c1);
