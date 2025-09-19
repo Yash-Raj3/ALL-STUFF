@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 #include<string.h>
 int main(){
@@ -15,13 +16,13 @@ int main(){
     scanf("%d",&transaction_amount);
 
     if(transaction_no > 3){
-        printf("Suspicious Transaction");
+        printf("Suspicious Transaction(More Transactions than usual)");
     }
     else if((strcmp(country,"Pakistan") && strcmp(country,"UAE"))!=0){
-        printf("Suspicious Transaction");
+        printf("Suspicious Transaction(Unusual Country)");
     }
     else if(transaction_amount > 5000){
-        printf("Suspicious Transaction");
+        printf("Suspicious Transaction(More Transaction Amount than Usual)");
     }
     else{
         printf("Normal Transaction");
