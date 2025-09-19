@@ -18,22 +18,23 @@ Count5 = Count5 + 1
 Else if (Number = 6) then 
 Count6 = Count6 + 1
 Else if (Number =7) then 
-Count7 = Count7 + 1
+Count7 = count7+1
 Else if (Number = 8) then
-Count8 = Count8 + 1
+Count8 = count8 + 1
 Else if ( Number =9) then 
-Count9 = Count9 + 1
+Count9 = count9+1
 End if
 Until(Number<0 OR Number>9)
 Print "Number   Number occurrence"
-Print"0         ",Count0
-Print "1         ",Count1
-Print "2         ",Count2
-Print "3         ",Count3
-Print "4         ",Count4
-Print "5         ",Count5
-Print "6         ",Count6
-Print "7         ",Count7
-Print "8         ",Count8
-Print "9         ",Count9
+Print"0"          ,Count0
+Print "1"         ,Count1
+Print "2"         ,Count2
+Print "3"         ,Count3
+Print "4"         ,Count4
+Print "5"         ,Count5
+Print "6"         ,Count6
+Print "7"         ,Count7
+Print "8"         ,Count8
+Print "9"         ,Count9
+
 END
