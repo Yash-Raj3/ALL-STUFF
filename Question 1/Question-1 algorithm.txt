@@ -1,0 +1,9 @@
+START
+Input transaction number 
+Input transaction country 
+Input transaction amount
+if transaction number is greater than 3 then suspicious transaction otherwise safe transaction
+if transaction is not Pakistan and UAE then suspicious transaction otherwise safe transaction
+if transaction amount is greater than 5000 then suspicious transaction otherwise safe transaction
+END
+
