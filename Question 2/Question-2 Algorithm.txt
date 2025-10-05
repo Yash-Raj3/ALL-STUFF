@@ -1,9 +1,0 @@
-START
-Input x-coordinate
-Input y-coordinate
-if x and y are positive then 1st quadrant
-if x is negative and y is positive then 2nd quadrant
-if x and y are negative then 3rd quadrant 
-if x is positive and y is negative then 4th quadrant 
-if x and y are zero then on origin
-END
