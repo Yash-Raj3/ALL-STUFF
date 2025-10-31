@@ -57,7 +57,7 @@ void Display(int stack[], int top)
         return;
     }
     printf("\n===STACK===\n");
-    for (int i = 0; i <= top; i++)
+    for (int i = top; i >=0; i--)
     {
         printf("  -%d-\n", stack[i]);
     }

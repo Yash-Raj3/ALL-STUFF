@@ -1,81 +1,87 @@
 #include <stdio.h>
-#include <stdio.h>
 void display()
 {
-    printf("\n====TCS Secure Message Tool====\n");
-    printf("1. Encode Message\n");
-    printf("2. Decode Message\n");
-    printf("3. Exit\n");
+    printf("\n=============\n");
+    printf("1. Update Sector Status\n");
+    printf("2. Query Sector Status\n");
+    printf("3. Run System Diagnostic\n");
+    printf("4. Exit\n");
 }
-void toggling(char message[])
+void update(int gird[4][4], int row, int col, int set, int flag)
 {
-    for (int i = 0; message[i] != '\0'; i++)
+    if (set == 1)
     {
-        message[i] = message[i] ^ (1 << 1);
-        message[i] = message[i] ^ (1 << 4);
+        gird[row][col] |= flag;
+    }
+    else
+    {
+        gird[row][col] &= ~flag;
     }
 }
-void reverseMessage(char message[], int length)
+void Query(int gird[4][4], int row, int col)
 {
-    for (int i = 0; i < length / 2; i++)
-    {
-        char temp = message[i];
-        message[i] = message[length - i - 1];
-        message[length - i - 1] = temp;
-    }
+    int status = gird[row][col];
+    int power = status & 1;
+    int overload = status & 2;
+    int maintenance = status & 4;
+    printf("===STATUS===\n");
+    power ? printf("Power is On\n") : printf("Power is OFF\n");
+    overload ? printf("Overload\n") : printf("Not Overload\n");
+    maintenance ? printf("Maintenance Required\n") : printf("Maintenance Not Required\n");
 }
-void encodeMessage(char message[])
+void diagnostic(int gird[4][4])
 {
-    int length = 0;
-    while (message[length] != '\0')
+    int overload = 0, maintenance = 0;
+    for (int i = 0; i < 4; i++)
     {
-        length++;
+        for (int j = 0; j < 4; j++)
+        {
+            if (gird[i][j] & 2)
+                overload++;
+            if (gird[i][j] & 4)
+                maintenance++;
+        }
     }
-    reverseMessage(message, length);
-    toggling(message);
+    printf("===Diagnosis===\n");
+    printf("Total Overloaded Sector:%d\n", overload);
+    printf("Total Sector Where Maintenace is Required : %d\n", maintenance);
 }
-void decodeMessage(char message[])
-{
-    int length = 0;
-    while (message[length] != '\0')
-    {
-        length++;
-    }
-    toggling(message);
-    reverseMessage(message, length);
-}
-
 int main()
 {
-    char Message[1000];
-    char Code[1000];
     int choice = 0;
-    while (choice != 3)
+    int rows, col;
+    int gird[4][4] = {0};
+    int flag, set;
+    while (choice != 4)
     {
         display();
-        printf("Enter Your Choice :");
+        printf("Enter Choice:");
         scanf("%d", &choice);
         switch (choice)
         {
         case 1:
-            printf("Enter Message To Encode :");
-            scanf(" %[^\n]", Message);
-            encodeMessage(Message);
-            printf(" %s\n", Message);
+            printf("Enter Row And Column Of Sector(0-3):");
+            scanf("%d %d", &rows, &col);
+            printf("Select Flag(1.Power 2.Overload 4.Maintenance):");
+            scanf("%d", &flag);
+            printf("Set(1) or Clear(0):");
+            scanf("%d", &set);
+            update(gird, rows, col, set, flag);
             break;
         case 2:
-            printf("Enter Code To Decode :");
-            scanf(" %[^\n]", Code);
-            decodeMessage(Code);
-            printf(" %s\n", Code);
+            printf("Enter Row And Column Of Sector(0-3):");
+            scanf("%d %d", &rows, &col);
+            Query(gird, rows, col);
             break;
         case 3:
-            printf("Exiting....\n");
+            diagnostic(gird);
+            break;
+        case 4:
+            printf("Exiting.......\n");
             return 0;
             break;
         default:
             printf("Invalid Choice!\n");
         }
     }
-    return 0;
 }
