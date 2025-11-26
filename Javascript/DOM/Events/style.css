@@ -1,0 +1,14 @@
+div{
+
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+width: 200px;
+height: 200px;
+border:  2px brown;
+border-style: dotted;
+}
+#yash:hover{
+    background-color: green;
+}
+#Mode{
+    background-color: brown;
+}

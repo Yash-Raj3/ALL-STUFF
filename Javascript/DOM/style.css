@@ -1,0 +1,17 @@
+div{
+border: 2px;
+border-style: solid;
+height: 200px;
+width: 200px;
+color: rgb(227, 209, 7);
+background-color: blue;
+}
+body{
+    background-color: beige;
+}
+.my{
+    color: red;
+}
+.new{
+    background-color: green;
+}

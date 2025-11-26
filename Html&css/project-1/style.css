@@ -1,0 +1,56 @@
+   *{
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+
+       }
+       html,body{
+        width: 100%;
+        height: 100%;
+       }
+     #main{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 100%;
+        width: 100%;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        
+     }
+     .shape{
+        margin-top: 10px;
+        margin-left: 10px;
+        height: 200px;
+        width: 200px;
+        border: 1px;
+        border-style: solid;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+     }
+     #Circle{
+        border-radius: 50%;
+        
+     }
+     #Circle:hover{
+       background-color: red;
+        
+     }
+     #Diamond{
+        rotate: 45deg;
+        margin-top: 50px;
+        
+     }
+     #Diamond:hover{
+      background-color: blue;
+     }
+     #Square:hover{
+     background-color: green;
+
+     }
+     #Diamond h1{
+        rotate: -45deg;
+     }
+     h1{
+        font-weight: normal;
+     }
