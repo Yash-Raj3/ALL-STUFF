@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunshine - Hotel Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Sunshine Hotel</h1>
+        <p>Experience Comfort & Luxury</p>
+    </header>
+
+    <div class="container">
+        
+        <h2 style="text-align:center; margin-top:20px; color:#2c3e50;">Our Rooms</h2>
+        <div class="rooms-section">
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Standard Room">
+                <div class="room-info">
+                    <h3>Standard Room</h3>
+                    <p>Comfortable bed with essential amenities.</p>
+                    <p class="price-tag">Rs. 5,000 / Night</p>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="https://image-tc.galaxy.tf/wijpeg-afu0zj5rhmyyirzditj3g96mk/deluxe-room-king-1-2000px.jpg" alt="Deluxe Room">
+                <div class="room-info">
+                    <h3>Deluxe Room</h3>
+                    <p>Spacious room with city view and balcony.</p>
+                    <p class="price-tag">Rs. 10,000 / Night</p>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="https://sitecore-cd-imgr.shangri-la.com/MediaFiles/8/3/D/%7B83D13807-B24F-4540-B675-6294BF973875%7D20250120_SLKLROYALSUITE01.jpg" alt="Luxury Suite">
+                <div class="room-info">
+                    <h3>Royal Suite</h3>
+                    <p>Ultimate luxury with living area and jacuzzi.</p>
+                    <p class="price-tag">Rs. 20,000 / Night</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="booking-section">
+            <h2>Book Your Stay</h2>
+            <form id="bookingForm" onsubmit="confirmBooking(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="number" placeholder="0300-1234567" required>
+                    </div>
+                    <div class="form-group">
+                        <label>CNIC Number</label>
+                        <input type="number" placeholder="42101-1234567-1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Room Type</label>
+                        <select id="roomType" onchange="calculateTotal()">
+                            <option value="0" disabled selected>Choose a room...</option>
+                            <option value="5000">Standard Room (Rs. 5,000)</option>
+                            <option value="10000">Deluxe Room (Rs. 10,000)</option>
+                            <option value="20000">Royal Suite (Rs. 20,000)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Check-In Date</label>
+                        <input type="date" id="checkIn" onchange="calculateTotal()" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Check-Out Date</label>
+                        <input type="date" id="checkOut" onchange="calculateTotal()" required>
+                    </div>
+
+                    <div class="bill-area">
+                        <p>Total Estimated Cost:</p>
+                        <div id="totalPrice">Rs. 0</div>
+                    </div>
+
+                    <button type="submit" class="btn-book">Confirm Booking</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+   <script src="script.js"></script>
+
+</body>
+</html>
