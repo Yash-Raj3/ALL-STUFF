@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: gray;
+    display:flex;
+    justify-content: center;
+    align-items:center ;
+}
+
+.container{
+    box-shadow: 10px 3px 3px black ;
+    display: block;
+    width: 300px;
+margin-top: 10%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+ 
+h2{
+    text-align: center;
+}
+.container input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+#btn1{
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    background-color: lightblue;
+
+}
+#btn2{
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    background-color: lightblue;
+
+}
+
+.container label{
+    margin-left: 10px;
+}
+#email{
+    margin-left: 10%;
+}
+#phone{
+    margin-left: 9%;
+}
+    </style>
+</head>
+<body>
+    <div class="container" id="box">
+<h2>Login</h2>
+<form id="form" >
+<label for="Username">Username:</label>
+<input type="text" id="name" placeholder="Enter UserName" required>
+
+<label for="Email">Email:</label>
+<input type="email" id ="email" placeholder="Enter Email" required>
+<label for="Password">Password:</label>
+<input type="password" id="password" placeholder="Enter Password" required>
+    <label for="Phone">Phone:</label>
+<input type="tel" id="phone" placeholder="03XX-XXXXXXX" required pattern="[0-9]{4}-[0-9]{7}">
+    
+<button type="button" onclick="change()" id="btn1" >MODE</button>
+<button type="submit" id="btn2">Log in</button>
+</form>
+    </div>
+    <script>
+function change(){
+    document.getElementById("box").style.backgroundColor="lightblue";
+}
+
+
+
+    </script>
+</body>
+</html>

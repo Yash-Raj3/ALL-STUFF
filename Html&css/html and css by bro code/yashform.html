@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix it</title>
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#Welcome{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: yellow;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+
+}
+.header{
+    background-color: black;
+    padding: 8px;
+    display: flex;
+    justify-content: space-evenly;
+ 
+}
+.header a{
+    background-color: black;
+    padding: 8px;
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+
+}
+.intro{
+    margin: 10px;
+    display:inline-flex; 
+}
+#img{
+    border-radius: 8px;
+    position: sticky;
+    margin-right: 3px;
+}
+h3{
+    background-color: yellow;
+    text-align: center;
+    padding: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.intro p{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 3px;
+}
+.container{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 300px;
+    background-color: yellow;
+box-sizing: border-box;
+    margin-top: 50px;
+    margin-left: 50%;
+    border-radius: 5px;
+    padding: 10px;
+    border: 3px solid;
+    display: grid;
+    justify-content: space-evenly;
+    
+}
+
+.container h2{
+    text-align: center;
+    padding:  5px;
+}
+.container label{
+
+font-weight: bolder;
+margin-bottom: 10px;
+
+ 
+}
+.container input{
+    padding: 5px;
+     width: 150px;
+    border-radius: 5cm;
+    margin-left: 20px;
+    
+}
+.container select{
+  margin-left: 10%;
+    padding: 5px;
+    width: 170px;
+    border-radius:10px;
+}
+.container textarea{
+    padding: 5px;
+    margin-left: 10%;
+    border-radius:  10px;
+    width: 190px;
+}
+.container button{
+    padding: 5px;
+    font-weight: bolder;
+    width: 200px;
+    margin-left: 50px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+footer{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 10px;
+  background-color: yellow;
+  padding: 10px;
+  text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div id="Welcome">Techno City</div>
+
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">Repair</a>
+        <a href="#">Pricing</a>
+        <a href="#">Contact</a>
+
+    </header>
+     <h3>Introducing New Technology-</h3>
+    <section class="intro">
+        <img id="img"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd4WPwQeYH_wITLbEC--MAkc_H7HffK70TjQ&s" alt="Fix it">
+       
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ipsam laboriosam iste totam qui, tenetur natus excepturi odio inventore quis, architecto dolores quasi quidem eveniet dolorem omnis est unde itaque sapiente voluptate cumque ipsum possimus doloribus. Quam dolore debitis blanditiis officiis ea nemo, expedita consectetur maiores sunt tempora quas. Quas incidunt autem nemo, necessitatibus cum ratione temporibus accusamus rem fugiat dolor deleniti! Necessitatibus qui repudiandae est tempora modi minus totam fugiat adipisci temporibus porro. Maxime sunt non harum sit quam labore qui? Provident nesciunt, impedit, cupiditate aperiam eos commodi quia culpa nulla, vero alias aliquid! Fugiat facere eaque harum temporibus.</p>
+    </section>
+    <hr>
+    <section class="form" id="forM">
+        <form>
+           
+            <div class="container">
+                <h2>Appointment</h2>
+                <label for="Name">Name:</label>
+                <input type="text" id="Name: " required placeholder="Enter Name">
+                <br>
+                <label for="Device">Device Type:</label>
+                <select name="Type" id="type" >
+                        <option value="1">Mobile</option>
+                        <option value="2">Laptop</option>
+                        <option value="3">PC</option>
+                        <option value="4">Ipad</option>
+                </select>
+                
+                <label for="issue">Issue:</label>
+                <textarea name="issue" id="issue" maxlength="60" placeholder="Issue"></textarea>
+                
+                <label for="phone">Phone:</label>
+                <input type="number" id="phone" placeholder="Enter Number">
+                
+                <button type="submit">Submit</button>
+
+            </div>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; All Copy Rights Reserved</p>
+    </footer>
+    
+</body>
+</html>

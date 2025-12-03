@@ -1,0 +1,18 @@
+.gallery{
+    display: inline-block;
+    border: 1px solid;
+    margin: 5px;
+}
+#img1{
+width: 150px;
+height: 100px;
+}
+#img2{
+width: 150px;
+height: 100px;
+}
+#img3{
+width: 150px;
+height: 100px;
+}
+
