@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum and Product</title>
+    <style>
+body{
+    background-color: blanchedalmond;
+}
+button{
+    width: 20px;
+}
+
+
+    </style>
+</head>
+<body>
+    <input type="number" id="Number1" placeholder="Number 1"><br>
+    <input type="number"  id="Number2" placeholder="Number 2"><br>
+<Button onclick="Sum()">Sum</Button>
+<button onclick="Product()">Product</button><br>
+<p id="Result1">Sum</p>
+<p id="Result2">Product</p>
+
+<script>
+    function Sum(){
+ let Num1 = Number(document.getElementById("Number1").value);
+let Num2 = Number(document.getElementById("Number2").value);
+let Result = Num1+Num2;
+document.getElementById("Result1").innerHTML = `Sum is ${Result}`;
+   }
+function Product(){
+let Num1 = Number(document.getElementById("Number1").value);
+let Num2 = Number(document.getElementById("Number2").value);
+let Result = Num1*Num2;
+document.getElementById("Result2").innerHTML = "Product is :"+Result;
+}
+
+
+</script>
+    
+</body>
+</html>

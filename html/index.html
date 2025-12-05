@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hotel Management System</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background:#f5f5f5; }
+    h1 { text-align:center; }
+    nav { margin-bottom:20px; }
+    nav button { margin-right:10px; padding:8px 12px; }
+    section { display:none; background:#fff; padding:20px; border-radius:6px; }
+    table { width:100%; border-collapse:collapse; margin-top:10px; }
+    th, td { border:1px solid #ccc; padding:8px; text-align:left; }
+    form input, form select { margin:5px 0; padding:6px; width:100%; }
+    form button { margin-top:10px; padding:8px 12px; }
+    .visible { display:block; }
+  </style>
+</head>
+<body>
+  <h1>Hotel Management System (Frontend Only)</h1>
+  <nav>
+    <button onclick="showSection('rooms')">Rooms</button>
+    <button onclick="showSection('customers')">Customers</button>
+    <button onclick="showSection('bookings')">Bookings</button>
+    <button onclick="showSection('dashboard')">Dashboard</button>
+  </nav>
+
+  <!-- Rooms -->
+  <section id="rooms">
+    <h2>Rooms</h2>
+    <form onsubmit="addRoom(event)">
+      <input type="text" id="roomNumber" placeholder="Room Number" required>
+      <select id="roomType">
+        <option>SINGLE</option><option>DOUBLE</option><option>SUITE</option>
+      </select>
+      <input type="number" id="roomPrice" placeholder="Price per night" required>
+      <button type="submit">Add Room</button>
+    </form>
+    <table id="roomsTable"><thead><tr><th>#</th><th>Type</th><th>Price</th></tr></thead><tbody></tbody></table>
+  </section>
+
+  <!-- Customers -->
+  <section id="customers">
+    <h2>Customers</h2>
+    <form onsubmit="addCustomer(event)">
+      <input type="text" id="custName" placeholder="Full Name" required>
+      <input type="email" id="custEmail" placeholder="Email">
+      <button type="submit">Add Customer</button>
+    </form>
+    <table id="customersTable"><thead><tr><th>Name</th><th>Email</th></tr></thead><tbody></tbody></table>
+  </section>
+
+  <!-- Bookings -->
+  <section id="bookings">
+    <h2>Bookings</h2>
+    <form onsubmit="addBooking(event)">
+      <select id="bookingCustomer"></select>
+      <select id="bookingRoom"></select>
+      <input type="date" id="checkIn" required>
+      <input type="date" id="checkOut" required>
+      <button type="submit">Book</button>
+    </form>
+    <table id="bookingsTable"><thead><tr><th>Customer</th><th>Room</th><th>Check-in</th><th>Check-out</th></tr></thead><tbody></tbody></table>
+  </section>
+
+  <!-- Dashboard -->
+  <section id="dashboard">
+    <h2>Dashboard</h2>
+    <p id="stats"></p>
+  </section>
+
+<script>
+let rooms = [];
+let customers = [];
+let bookings = [];
+
+function showSection(id){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('visible'));
+  document.getElementById(id).classList.add('visible');
+  if(id==='bookings') refreshBookingForm();
+  if(id==='dashboard') updateDashboard();
+}
+
+function addRoom(e){
+  e.preventDefault();
+  const num = document.getElementById('roomNumber').value;
+  const type = document.getElementById('roomType').value;
+  const price = document.getElementById('roomPrice').value;
+  rooms.push({num,type,price});
+  document.getElementById('roomNumber').value='';
+  document.getElementById('roomPrice').value='';
+  renderRooms();
+}
+function renderRooms(){
+  const tbody=document.querySelector('#roomsTable tbody');
+  tbody.innerHTML='';
+  rooms.forEach(r=>{
+    tbody.innerHTML+=`<tr><td>${r.num}</td><td>${r.type}</td><td>${r.price}</td></tr>`;
+  });
+}
+
+function addCustomer(e){
+  e.preventDefault();
+  const name=document.getElementById('custName').value;
+  const email=document.getElementById('custEmail').value;
+  customers.push({name,email});
+  document.getElementById('custName').value='';
+  document.getElementById('custEmail').value='';
+  renderCustomers();
+}
+function renderCustomers(){
+  const tbody=document.querySelector('#customersTable tbody');
+  tbody.innerHTML='';
+  customers.forEach(c=>{
+    tbody.innerHTML+=`<tr><td>${c.name}</td><td>${c.email}</td></tr>`;
+  });
+}
+
+function refreshBookingForm(){
+  const custSel=document.getElementById('bookingCustomer');
+  const roomSel=document.getElementById('bookingRoom');
+  custSel.innerHTML=customers.map((c,i)=>`<option value="${i}">${c.name}</option>`).join('');
+  roomSel.innerHTML=rooms.map((r,i)=>`<option value="${i}">${r.num} (${r.type})</option>`).join('');
+}
+
+function addBooking(e){
+  e.preventDefault();
+  const cust=customers[document.getElementById('bookingCustomer').value];
+  const room=rooms[document.getElementById('bookingRoom').value];
+  const inDate=document.getElementById('checkIn').value;
+  const outDate=document.getElementById('checkOut').value;
+  bookings.push({cust,room,inDate,outDate});
+  renderBookings();
+}
+function renderBookings(){
+  const tbody=document.querySelector('#bookingsTable tbody');
+  tbody.innerHTML='';
+  bookings.forEach(b=>{
+    tbody.innerHTML+=`<tr><td>${b.cust.name}</td><td>${b.room.num}</td><td>${b.inDate}</td><td>${b.outDate}</td></tr>`;
+  });
+}
+
+function updateDashboard(){
+  const occupied=bookings.length;
+  const totalRooms=rooms.length;
+  document.getElementById('stats').innerText=`Total Rooms: ${totalRooms}, Bookings: ${occupied}`;
+}
+
+// Show default section
+showSection('dashboard');
+</script>
+</body>
+</html>

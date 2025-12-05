@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hotel Booking Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f4f4f4;
+    }
+    header {
+      background: #333;
+      color: white;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .room, .booking, .confirmation {
+      background: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+    button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    section { display: none; }
+    section.active { display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Paradise Hotel</h1>
+    <nav>
+      <a onclick="showSection('home')">Home</a>
+      <a onclick="showSection('booking')">Book Now</a>
+      <a onclick="showSection('confirm')">My Bookings</a>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home" class="active">
+    <h2>Available Rooms</h2>
+    <div class="room">
+      <h3>Deluxe Room</h3>
+      <p>Price: $100 per night</p>
+      <button onclick="selectRoom('Deluxe Room',100)">Select</button>
+    </div>
+    <div class="room">
+      <h3>Suite</h3>
+      <p>Price: $180 per night</p>
+      <button onclick="selectRoom('Suite',180)">Select</button>
+    </div>
+    <div class="room">
+      <h3>Standard Room</h3>
+      <p>Price: $70 per night</p>
+      <button onclick="selectRoom('Standard Room',70)">Select</button>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section id="booking">
+    <h2>Booking Form</h2>
+    <form id="bookingForm">
+      <p>Room Selected: <span id="roomName"></span></p>
+      <p>Price per Night: $<span id="roomPrice"></span></p>
+
+      <label>Check-in Date: <input type="date" id="checkIn" required></label><br>
+      <label>Check-out Date: <input type="date" id="checkOut" required></label><br>
+
+      <p>Total Price: $<span id="totalPrice">0</span></p>
+      <button type="submit">Confirm Booking</button>
+    </form>
+  </section>
+
+  <!-- Confirmation Section -->
+  <section id="confirm">
+    <h2>My Bookings</h2>
+    <div id="bookingsList"></div>
+  </section>
+
+  <script>
+    // Show sections
+    function showSection(id) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      if (id === "booking") loadBookingForm();
+      if (id === "confirm") loadBookings();
+    }
+
+    // Select room
+    function selectRoom(name, price) {
+      localStorage.setItem("roomName", name);
+      localStorage.setItem("roomPrice", price);
+      showSection("booking");
+    }
+
+    // Load booking form
+    function loadBookingForm() {
+      const roomName = localStorage.getItem("roomName") || "";
+      const roomPrice = localStorage.getItem("roomPrice") || 0;
+      document.getElementById("roomName").textContent = roomName;
+      document.getElementById("roomPrice").textContent = roomPrice;
+    }
+
+    // Booking form logic
+    const form = document.getElementById("bookingForm");
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const roomName = localStorage.getItem("roomName");
+      const roomPrice = parseInt(localStorage.getItem("roomPrice"));
+
+      const checkIn = new Date(document.getElementById("checkIn").value);
+      const checkOut = new Date(document.getElementById("checkOut").value);
+      const nights = (checkOut - checkIn) / (1000 * 60 * 60 * 24);
+
+      if (nights <= 0) {
+        alert("Check-out must be after check-in!");
+        return;
+      }
+
+      const total = nights * roomPrice;
+      document.getElementById("totalPrice").textContent = total;
+
+      const booking = {
+        room: roomName,
+        pricePerNight: roomPrice,
+        checkIn: checkIn.toDateString(),
+        checkOut: checkOut.toDateString(),
+        total: total
+      };
+
+      let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+      bookings.push(booking);
+      localStorage.setItem("bookings", JSON.stringify(bookings));
+
+      showSection("confirm");
+    });
+
+    // Load confirmation
+    function loadBookings() {
+      const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+      const container = document.getElementById("bookingsList");
+      container.innerHTML = "";
+      if (bookings.length === 0) {
+        container.innerHTML = "<p>No bookings yet.</p>";
+      } else {
+        bookings.forEach(b => {
+          const div = document.createElement("div");
+          div.className = "confirmation";
+          div.innerHTML = `
+            <h3>${b.room}</h3>
+            <p>Check-in: ${b.checkIn}</p>
+            <p>Check-out: ${b.checkOut}</p>
+            <p>Total Price: $${b.total}</p>
+          `;
+          container.appendChild(div);
+        });
+      }
+    }
+  </script>
+</body>
+</html>
